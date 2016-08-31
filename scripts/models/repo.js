@@ -2,14 +2,23 @@
   var reposObj = {};
 
   reposObj.allRepos = [];
+  reposObj.followers = [];
 
   reposObj.requestRepos = function(callback) {
-    // TODO: refactor this request into an $.ajax call 
-    $.get('/github/users/codefellows-seattle-301d9/repos' +
-          '?per_page=10&sort=updated')
-          .done(function(data) {
-            reposObj.allRepos = data;
-          }).done(callback);
+    // NOTE: refactor this request into an $.get call
+    $.when(
+      $.get('/github/users/codefellows-seattle-301d10/repos' +
+      '?per_page=10&sort=updated',
+        function(data) {
+          reposObj.allRepos = data;
+        }
+      ),
+      $.get('/github/users/patci/followers',
+        function(data) {
+          reposObj.followers = data;
+        }
+      )
+    ).done(callback);
   };
 
   reposObj.withTheAttribute = function(attr) {

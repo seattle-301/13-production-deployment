@@ -5,7 +5,7 @@
   var followersCompiler = Handlebars.compile($('#followers-template').text());
 
   repoView.renderRepos = function() {
-    $('#about ul').empty().append(
+    $('#about .repos').empty().append(
       reposObj.withTheAttribute('name')
       .map(repoCompiler)
     );

@@ -16,10 +16,7 @@
         'authorUrl VARCHAR (255), ' +
         'category VARCHAR(20), ' +
         'publishedOn DATETIME, ' +
-        'body TEXT NOT NULL);',
-      function() {
-        console.log('Successfully set up the articles table.');
-      }
+        'body TEXT NOT NULL);'
     );
   };
 
